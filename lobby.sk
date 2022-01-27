@@ -5,7 +5,7 @@ function sendToLobby(p: player):
 	set slot 4 of {_p} to {Items::JoinGame}
 
 command /setlobby:
-	permission: setlobby:
+	permission: setlobby
 	trigger:
 		set {Lobby} to location of player
 		Success(player, "Set lobby location to &9%location of player%")
