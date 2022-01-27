@@ -1,6 +1,6 @@
 
 function newMap(m: string, spawnpoint: location):
-	set {Maps::maps::%{_m}%::*} to {_m}
+	set {Maps::maps::%{_m}%} to {_m}
 	set {Maps::maps::%{_m}%::spawnpoint} to {_spawnpoint}
 
 function removeMap(m: string):
