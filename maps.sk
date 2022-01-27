@@ -35,3 +35,5 @@ command /maps:
 	aliases: maplist
 	trigger:
 		ServerMessage(player, "Maps: &7%getMaps()%")
+
+afasdfasdf
