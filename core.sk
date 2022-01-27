@@ -13,3 +13,6 @@ function Success(p: players, m: objects):
 
 function ServerMessage(p: players, m: objects):
 	send "&8[&bJumpyArena&8] &f%{_m::*}%" to {_p::*}
+
+function Assert(cond: boolean, where: string):
+	broadcast "&8[&9✘&8] &fAssertion failed in &9%{_where}%&f!" if {_cond} is false
