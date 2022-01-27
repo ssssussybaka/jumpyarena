@@ -1,3 +1,3 @@
 
 variables:
-	{Items::Leap} = feather named "&eLeap &8(RIGHT-CLICK)" with lore "&7Boosts you forwards."
+	{Items::Leap} = a feather named "&eLeap &7[RIGHT-CLICK]" with lore "&7Boosts you forwards."
