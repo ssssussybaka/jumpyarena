@@ -2,6 +2,8 @@
 on script load:
 	clear {Items::*}
 	set {Items::Leap} to feather named "&eLeap &8[RIGHT-CLICK]" with lore "&7Boosts you forwards."
+	set {Items::CheckpointTeleport} to light weighted pressure plate named "&eTeleport to checkpoint &8[RIGHT-CLICK]" with lore "&7Teleport you to the checkpoint."
+	set {Items::LeaveGame} to compass named "&eLeave To Lobby &8[RIGHT-CLICK]" with lore "&7Leave the game you are playing."
 
 on right click:
 	if tool of player is {Items::Leap}:
@@ -12,3 +14,7 @@ on right click:
 			stop
 		push player forward at speed 1.8
 		set {Leap::%uuid of player%::lastUsed} to now
+	else if tool of player is {Items::LeaveGame}:
+		leaveGame(player)
+	else if tool of player is {Items::CheckpointTeleport}:
+		teleportToLevel(player)
