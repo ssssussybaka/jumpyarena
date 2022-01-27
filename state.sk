@@ -10,4 +10,5 @@ function getState(p: player) :: number:
 function setState(p: player, s: number) :: number:
 	set {_u} to uuid of {_p}
 	set {state::%{_u}%} to {_s}
+	scoreboard({_p}, {_s})
 	return {_s}
