@@ -6,6 +6,9 @@ function newMap(m: string, spawnpoint: location):
 function removeMap(m: string):
 	delete {Maps::maps::%{_m}%::*}
 
+function getSpawnpoint(m: string) :: location:
+	return {Maps::maps::%{_m}%::spawnpoint}
+
 function mapExists(m: string) :: boolean:
 	return true if {Maps::maps::*} contains {_m}
 	return false
@@ -28,8 +31,14 @@ command /map [<string>] [<string>]:
 				stop
 			removeMap(arg-2)
 			Success(player, "Successfully removed map &9%arg-2%&f.")
+		else if arg-1 is "tp" or "teleport":
+			if mapExists(arg-2) = false:
+				UserError(player, "Map &9%arg-2%&f does not exist.")
+				stop
+			Success(player, "Teleporting you to &9%arg-2%&f.")
+			teleport player to getSpawnpoint(arg-2)
 		else:
-			UserError(player, "Unknown argument. Valid ones are &7create and delete&f.")
+			UserError(player, "Unknown argument. Valid ones are &7create, remove, delete, tp and teleport&f.")
 
 command /maps:
 	aliases: maplist
