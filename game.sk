@@ -19,6 +19,7 @@ function joinGame(p: player) :: boolean:
 	if getState({_p}) = {PLAYER_LOBBY}:
 		add {_p} to {Game::players::*}
 		setState({_p}, {PLAYER_INGAME})
+		gameInitPlayer({_p})
 		return true
 	return false
 
@@ -33,3 +34,7 @@ function leaveGame(p: player) :: boolean:
 
 on disconnect:
 	leaveGame(player)
+
+function gameInitPlayer(p: player):
+	setLevel({_p}, 1)
+	teleportToLevel({_p})

@@ -11,7 +11,7 @@ function getLevel(p: player) :: number:
 function nextLevel(p: player):
 	set {_n} to getLevel({_p}) + 1
 	setLevel({_p}, {_n})
-	teleportToNextLevel({_p})
+	teleportToLevel({_p})
 
-function teleportToNextLevel(p: player):
+function teleportToLevel(p: player):
 	Unimplemented("teleportToNextLevel in level.sk")
