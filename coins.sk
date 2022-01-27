@@ -9,5 +9,5 @@ function getCoins(p: player) :: number:
 	return {coins::%{_u}%} ? 0
 
 function earn(p: player, c: number) :: number:
-	set {_n} to getCoins({_p}) + 1
+	set {_n} to getCoins({_p}) + {_c}
 	return setCoins({_p}, {_n})
