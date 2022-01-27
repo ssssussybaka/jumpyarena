@@ -1,6 +1,9 @@
 
+options:
+	PlayerState: number
+
 function scoreboardText(s: string):
-	set score {_s} in sidebar of {scoreboard::player} to {scoreboard::count}
+	set score "  %{_s}%" in sidebar of {scoreboard::player} to {scoreboard::count}
 	remove 1 from {scoreboard::count}
 
 function scoreboardSpace():
@@ -8,21 +11,26 @@ function scoreboardSpace():
 	scoreboardText({scoreboard::space})
 
 function scoreboardValue(n: objects, v: objects):
-	scoreboardText("  &b%{_n::*}% &8» &7%{_v::*}%")
+	scoreboardText("&b%{_n::*}% &8» &7%{_v::*}%")
 
-function scoreboard(p: player):
+function scoreboard(p: player, playerState: {@PlayerState}):
 	set {scoreboard::space} to " "
 	set {scoreboard::count} to 99
 	set {scoreboard::player} to {_p}
 	wipe {_p}'s sidebar
 	set name of sidebar of {_p} to "   &b&lJumpyArena   "
 	scoreboardSpace()
-	scoreboardValue("Players", "&7%player count%&8/&7%max player count%")
-	scoreboardSpace()
-	scoreboardValue("Coins", getCoins({_p}))
-	scoreboardValue("Wins", getWins({_p}))
+	
+	if {_playerState} = {PLAYER_LOBBY}:
+		scoreboardValue("Players", "&7%player count%&8/&7%max player count%")
+		scoreboardSpace()
+		scoreboardValue("Coins", getCoins({_p}))
+		scoreboardValue("Wins", getWins({_p}))
+	else if {_playerState} = {PLAYER_INGAME}:
+		scoreboardText("&bIN GAME")
+
 	scoreboardSpace()
 
 every 4 seconds:
 	loop all players:
-		scoreboard(loop-player)
+		scoreboard(loop-player, getState(loop-player))
