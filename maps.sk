@@ -16,7 +16,7 @@ function getMaps() :: strings:
 	return {Maps::maps::*}
 
 function addMapLevel(m: string, l: location):
-	add {_ll} to {Maps::maps::%{_m}%::levels::*}
+	add {_l} to {Maps::maps::%{_m}%::levels::*}
 
 function getMapLevel(m: string, l: number) :: location:
 	return {Maps::maps::%{_m}%::levels::%{_l}%}
