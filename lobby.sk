@@ -9,3 +9,6 @@ command /setlobby:
 	trigger:
 		set {Lobby} to location of player
 		Success(player, "Set lobby location to &9%location of player%")
+
+on join:
+	sendToLobby(player)
