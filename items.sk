@@ -1,3 +1,4 @@
 
-variables:
-	{Items::Leap} = a feather named "&eLeap &7[RIGHT-CLICK]" with lore "&7Boosts you forwards."
+on script load:
+	clear {Items::*}
+	set {Items::Leap} to feather named "&eLeap &7[RIGHT-CLICK]" with lore "&7Boosts you forwards."
