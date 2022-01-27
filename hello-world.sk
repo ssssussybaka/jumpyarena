@@ -1,3 +1,0 @@
-
-on script load:
-    broadcast "Hello, World!"

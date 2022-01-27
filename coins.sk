@@ -1,0 +1,13 @@
+
+function setCoins(p: player, c: number) :: number:
+	set {_u} to uuid of {_p}
+	set {coins::%{_u}%} to {_c}
+	return {_c}
+
+function getCoins(p: player) :: number:
+	set {_u} to uuid of {_p}
+	return {coins::%{_u}%} ? 0
+
+function earn(p: player, c: number) :: number:
+	set {_n} to getCoins({_p}) + 1
+	return setCoins({_p}, {_n})
