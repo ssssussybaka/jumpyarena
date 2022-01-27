@@ -1,4 +1,14 @@
 
 on script load:
 	clear {Items::*}
-	set {Items::Leap} to feather named "&eLeap &7[RIGHT-CLICK]" with lore "&7Boosts you forwards."
+	set {Items::Leap} to feather named "&eLeap &8[RIGHT-CLICK]" with lore "&7Boosts you forwards."
+
+on right click:
+	if tool of player is {Items::Leap}:
+		set {_waited} to difference between {Leap::%uuid of player%::lastUsed} and now
+		set {_waitTime} to difference between {_waited} and 30 seconds
+		if {_waited} is less than 30 seconds:
+			send action bar "&7Please wait %{_waitTime}%" to player
+			stop
+		push player forward at speed 1.8
+		set {Leap::%uuid of player%::lastUsed} to now
