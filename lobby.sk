@@ -1,3 +1,11 @@
 
 function sendToLobby(p: player):
-	Unimplemented("sendToLobby in lobby.sk")
+	teleport {_p} to {Lobby}
+	clear inventory of {_p}
+	set slot 4 of {_p} to {Items::JoinGame}
+
+command /setlobby:
+	permission: setlobby:
+	trigger:
+		set {Lobby} to location of player
+		Success(player, "Set lobby location to &9%location of player%")
