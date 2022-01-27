@@ -1,3 +1,3 @@
 
 on script load:
-    broadcast "Hello World!"
+    broadcast "Hello, World!"
