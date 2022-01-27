@@ -12,9 +12,7 @@ function scoreboard(p: player):
 	set {scoreboard::count} to 99
 	set {scoreboard::player} to {_p}
 	wipe {_p}'s sidebar
-	scoreboardSpace()
 	scoreboardText("  &bHello World!")
-	scoreboardSpace()
 
 every 4 seconds:
 	loop all players:
