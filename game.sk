@@ -1,18 +1,3 @@
-
-# Game State
-variables:
-	{GAME_WAITING} = 0
-	{GAME_STARTING} = 1
-	{GAME_STARTED} = 2
-	{GAME_FINISHED} = 3
-
-function setGameState(s: number) :: number:
-	set {Game::state} to {_s}
-	return {_s}
-
-function getGameState() :: number:
-	return {Game::state} ? {GAME_WAITING}
-
 # Map
 function setGameMap(m: string) :: string:
 	set {Game::map} to {_m}
