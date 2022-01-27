@@ -1,5 +1,5 @@
 
-function newMap(m: string, spawnpoint: location):
+function newMap(m: string):
 	set {Maps::maps::%{_m}%} to {_m}
 
 function removeMap(m: string):
@@ -21,7 +21,7 @@ function addMapLevel(m: string, l: location):
 function getMapLevel(m: string, l: number) :: location:
 	return {Maps::maps::%{_m}%::levels::%{_l}%}
 
-command /map [<string>] [<string>] [<string>]:
+command /map [<string>] [<string>]:
 	permission: maps
 	trigger:
 		if arg-1 = "create":
@@ -46,7 +46,7 @@ command /map [<string>] [<string>] [<string>]:
 			if mapExists(arg-2) = false:
 				UserError(player, "Map &9%arg-2%&f does not exist.")
 				stop
-			setMapLevel(arg-2, arg-3 parsed as number)
+			addMapLevel(arg-2, location of player)
 			Success(player, "Added level for &9%arg-2%&f.")
 		else:
 			UserError(player, "Unknown argument. Valid ones are &7create, remove, delete, tp, teleport and addlevel&f.")
