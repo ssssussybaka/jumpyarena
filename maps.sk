@@ -34,4 +34,4 @@ command /map [<string>] [<string>]:
 command /maps:
 	aliases: maplist
 	trigger:
-		ServerMessage("Maps: &7%getMaps()%")
+		ServerMessage(player, "Maps: &7%getMaps()%")
