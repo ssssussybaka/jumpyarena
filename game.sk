@@ -8,7 +8,7 @@ function getGameMap() :: string:
 
 function pickRandomGameMap():
 	set {_m::*} to getMaps()
-	remove {Maps::current} from {_m::*}
+	remove {Game::map} from {_m::*}
 	set {_map} to random element out of {_m::*}
 	setGameMap({_map})
 

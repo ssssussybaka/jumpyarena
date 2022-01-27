@@ -14,4 +14,4 @@ function nextLevel(p: player):
 	teleportToLevel({_p})
 
 function teleportToLevel(p: player):
-	Unimplemented("teleportToNextLevel in level.sk")
+	teleport {_p} to getMapLevel(getGameMap(), getLevel({_p}))

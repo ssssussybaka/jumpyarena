@@ -1,7 +1,6 @@
 
 function newMap(m: string, spawnpoint: location):
 	set {Maps::maps::%{_m}%} to {_m}
-	set {Maps::maps::%{_m}%::spawnpoint} to {_spawnpoint}
 
 function removeMap(m: string):
 	delete {Maps::maps::%{_m}%::*}
@@ -16,14 +15,20 @@ function mapExists(m: string) :: boolean:
 function getMaps() :: strings:
 	return {Maps::maps::*}
 
-command /map [<string>] [<string>]:
+function addMapLevel(m: string, l: location):
+	add {_ll} to {Maps::maps::%{_m}%::levels::*}
+
+function getMapLevel(m: string, l: number) :: location:
+	return {Maps::maps::%{_m}%::levels::%{_l}%}
+
+command /map [<string>] [<string>] [<string>]:
 	permission: maps
 	trigger:
 		if arg-1 = "create":
 			if mapExists(arg-2) = true:
 				UserError(player, "Map &9%arg-2%&f already exists.")
 				stop
-			newMap(arg-2, location of player)
+			newMap(arg-2)
 			Success(player, "Successfully created map &9%arg-2%&f.")
 		else if arg-1 is "delete" or "remove":
 			if mapExists(arg-2) = false:
@@ -37,8 +42,14 @@ command /map [<string>] [<string>]:
 				stop
 			Success(player, "Teleporting you to &9%arg-2%&f.")
 			teleport player to getSpawnpoint(arg-2)
+		else if arg-1 is "addlevel":
+			if mapExists(arg-2) = false:
+				UserError(player, "Map &9%arg-2%&f does not exist.")
+				stop
+			setMapLevel(arg-2, arg-3 parsed as number)
+			Success(player, "Added level for &9%arg-2%&f.")
 		else:
-			UserError(player, "Unknown argument. Valid ones are &7create, remove, delete, tp and teleport&f.")
+			UserError(player, "Unknown argument. Valid ones are &7create, remove, delete, tp, teleport and addlevel&f.")
 
 command /maps:
 	aliases: maplist
