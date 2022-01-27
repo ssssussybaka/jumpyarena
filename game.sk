@@ -1,0 +1,50 @@
+
+# Game State
+variables:
+	{GAME_WAITING} = 0
+	{GAME_STARTING} = 1
+	{GAME_STARTED} = 2
+	{GAME_FINISHED} = 3
+
+function setGameState(s: number) :: number:
+	set {Game::state} to {_s}
+	return {_s}
+
+function getGameState() :: number:
+	return {Game::state} ? {GAME_WAITING}
+
+# Map
+function setGameMap(m: string) :: string:
+	set {Game::map} to {_m}
+	return {_m}
+
+function getGameMap() :: string:
+	return {Game::map}
+
+function pickRandomGameMap():
+	set {_m::*} to getMaps()
+	remove {Maps::current} from {_m::*}
+	set {_map} to random element out of {_m::*}
+	setGameMap({_map})
+
+# Players
+
+# Add player to game only if player is not in game
+function joinGame(p: player) :: boolean:
+	if getState({_p}) = {PLAYER_LOBBY}:
+		add {_p} to {Game::players::*}
+		setState({_p}, {PLAYER_INGAME})
+		return true
+	return false
+
+# Remove player from game if in game
+function leaveGame(p: player) :: boolean:
+	if getState({_p}) = {PLAYER_INGAME}:
+		remove {_p} from {Game::players::*}
+		setState({_p}, {PLAYER_LOBBY})
+		sendToLobby({_p})
+		return true
+	return false
+
+on disconnect:
+	leaveGame(player)

@@ -1,0 +1,3 @@
+
+function sendToLobby(p: player):
+	Unimplemented("sendToLobby in lobby.sk")

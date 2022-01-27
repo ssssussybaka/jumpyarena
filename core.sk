@@ -1,0 +1,15 @@
+
+function Unimplemented(f: string):
+	broadcast "&8[&9✘&8] &fUnimplemented function &9%{_f}%"
+
+function UserError(p: players, m: objects):
+	send "&8[&9✘&8] &f%{_m::*}%" to {_p::*}
+
+function Error(p: players, where: string, m: objects):
+	UserError({_p::*}, "An error occured in &9%{_where}%&f: %{_m::*}%")
+
+function Success(p: players, m: objects):
+	send "&8[&9✔&8] &f%{_m::*}%" to {_p::*}
+
+function ServerMessage(p: players, m: objects):
+	send "&8[&bJumpyArena&8] &f%{_m::*}%" to {_p::*}
