@@ -36,5 +36,7 @@ on disconnect:
 	leaveGame(player)
 
 function gameInitPlayer(p: player):
+	clear inventory of {_p}
+	set slot 4 of {_p} to {Items::Leap}
 	setLevel({_p}, 1)
 	teleportToLevel({_p})
