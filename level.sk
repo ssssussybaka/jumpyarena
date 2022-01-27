@@ -1,0 +1,13 @@
+
+function setLevel(p: player, l: number) :: number:
+	set {_u} to uuid of {_p}
+	set {level::%{_u}%} to {_l}
+	return {_l}
+
+function getLevel(p: player) :: number:
+	set {_u} to uuid of {_p}
+	return {level::%{_u}%} ? 0
+
+function nextLevel(p: player) :: number:
+	set {_n} to getLevel({_p}) + 1
+	return setLevel({_p}, {_n})
