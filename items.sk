@@ -19,3 +19,5 @@ on right click:
 		leaveGame(player)
 	else if tool of player is {Items::CheckpointTeleport}:
 		teleportToLevel(player)
+	else if tool of player is {Items::JoinGame}:
+		joinGame(player)
