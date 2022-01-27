@@ -10,7 +10,7 @@ function scoreboardSpace():
 function scoreboardValue(n: objects, v: objects):
 	scoreboardText("&b%{_n::*}% &8» &7%{_v::*}%")
 
-function scoreboard(p: player, playerState: {PlayerState}):
+function scoreboard(p: player, playerState: number):
 	set {scoreboard::space} to " "
 	set {scoreboard::count} to 99
 	set {scoreboard::player} to {_p}

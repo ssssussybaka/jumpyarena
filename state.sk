@@ -1,14 +1,13 @@
 
 variables:
-	{PlayerState} = number
 	{PLAYER_LOBBY} = 0
 	{PLAYER_INGAME} = 1
 
-function getState(p: player) :: {PlayerState}:
+function getState(p: player) :: number:
 	set {_u} to uuid of {_p}
 	return {state::%{_u}%} ? {PLAYER_LOBBY}
 
-function setState(p: player, s: {PlayerState}) :: {PlayerState}:
+function setState(p: player, s: number) :: number:
 	set {_u} to uuid of {_p}
 	set {state::%{_u}%} to {_s}
 	return {_s}
