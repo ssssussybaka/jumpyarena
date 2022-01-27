@@ -24,7 +24,7 @@ function scoreboard(p: player, playerState: number):
 		scoreboardValue("Coins", getCoins({_p}))
 		scoreboardValue("Wins", getWins({_p}))
 	else if {_playerState} = {PLAYER_INGAME}:
-		scoreboardText("&bIN GAME")
+		scoreboardValue("Map", getGameMap())
 
 	scoreboardSpace()
 
