@@ -7,6 +7,9 @@ function scoreboardSpace():
 	set {scoreboard::space} to "%{scoreboard::space}% "
 	scoreboardText({scoreboard::space})
 
+function scoreboardValue(n: objects, v: objects):
+	scoreboardText("  &b%{_n::*}% &8» &7%{_v::*}%")
+
 function scoreboard(p: player):
 	set {scoreboard::space} to " "
 	set {scoreboard::count} to 99
@@ -14,7 +17,10 @@ function scoreboard(p: player):
 	wipe {_p}'s sidebar
 	set name of sidebar of {_p} to "   &b&lJumpyArena   "
 	scoreboardSpace()
-	scoreboardText("  &bHello World!")
+	scoreboardValue("Players", "&7%player count%&8/&7%max player count%")
+	scoreboardSpace()
+	scoreboardValue("Coins", getCoins({_p}))
+	scoreboardValue("Wins", getWins({_p}))
 	scoreboardSpace()
 
 every 4 seconds:
