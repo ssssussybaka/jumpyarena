@@ -1,7 +1,7 @@
 
 function sendToLobby(p: player):
 	teleport {_p} to {Lobby}
-	clear inventory of {_p}
+	clear {_p}'s inventory
 	set slot 4 of {_p} to {Items::JoinGame}
 
 command /setlobby:

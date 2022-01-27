@@ -36,7 +36,7 @@ on disconnect:
 	leaveGame(player)
 
 function gameInitPlayer(p: player):
-	clear inventory of {_p}
+	clear {_p}'s inventory
 	set slot 0 of {_p} to {Items::CheckpointTeleport}
 	set slot 4 of {_p} to {Items::Leap}
 	set slot 8 of {_p} to {Items::LeaveGame}
