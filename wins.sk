@@ -1,0 +1,13 @@
+
+function setWins(p: player, c: number) :: number:
+	set {_u} to uuid of {_p}
+	set {wins::%{_u}%} to {_c}
+	return {_c}
+
+function getWins(p: player) :: number:
+	set {_u} to uuid of {_p}
+	return {wins::%{_u}%} ? 0
+
+function win(p: player) :: number:
+	set {_n} to getWins({_p}) + 1
+	return setWins({_p}, {_n})
